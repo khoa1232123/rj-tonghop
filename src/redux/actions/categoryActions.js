@@ -1,4 +1,4 @@
-import { ADD_CATEGORY, GET_CATEGORIES, ADD_NUMBERCATEGORY, GET_CATEGORY, UPDATE_CATEGORY, REMOVE_CATEGORY } from '../types';
+import { ADD_CATEGORY, GET_CATEGORIES, GET_CATEGORY, UPDATE_CATEGORY, DELETE_CATEGORY } from '../types';
 
 export const addCategory = (category) => {
   return (dispatch) => {
@@ -27,13 +27,6 @@ export const updateCategory = (category) => {
 export const deleteCategory = (id) => {
   return (dispatch) => {
     console.log('abc');
-    dispatch({ type: REMOVE_CATEGORY, payload: id });
-  };
-};
-
-export const addNumberCategory = () => {
-  console.log("111");
-  return (dispatch) => {
-    dispatch({ type: ADD_NUMBERCATEGORY });
+    dispatch({ type: DELETE_CATEGORY, payload: id });
   };
 };

@@ -1,46 +1,47 @@
+import { v4 } from 'uuid';
 import {
   ADD_CATEGORY,
   GET_CATEGORIES,
   GET_CATEGORY,
   UPDATE_CATEGORY,
-  REMOVE_CATEGORY,
+  DELETE_CATEGORY,
 } from '../types';
-import Categories from '../../containers/Layout/Categories';
 
 const initState = {
-  categories: [{ name: 'abc', description: 'abc' }],
+  categories: [],
   category: {},
 };
 
 const categoryReducer = (state = initState, action) => {
   const categories = state.categories;
-  const category = state.category;
-
+  var index = -1;
   switch (action.type) {
     case GET_CATEGORIES:
       return state;
 
     case ADD_CATEGORY:
-      categories.push(action.payload);
+      var newCategory = { id: v4(), ...action.payload };
+      categories.push(newCategory);
       return { ...state, categories };
 
     case GET_CATEGORY:
-      var getCategory = {
-        id: action.payload,
-        name: categories[action.payload].name,
-        description: categories[action.payload].description,
-      };
-      return { ...state, category: getCategory };
+      index = categories.findIndex(
+        (category) => category.id === action.payload
+      );
+      var category = {};
+      if (index !== -1) {
+        category = categories[index];
+      }
+      return { ...state, category };
 
     case UPDATE_CATEGORY:
-      var updateCategory = action.payload;
-      categories[updateCategory.id] = {
-        name: updateCategory.name,
-        description: updateCategory.description,
-      };
+      index = categories.findIndex(
+        (category) => category.id === action.payload.id
+      );
+      categories[index] = action.payload;
       return { ...state, categories, category: {} };
 
-    case REMOVE_CATEGORY:
+    case DELETE_CATEGORY:
       console.log('abc');
       categories.splice(action.payload, 1);
       return { ...state, categories };

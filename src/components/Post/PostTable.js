@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCategory, deleteCategory } from '../../redux/actions/categoryActions';
 
-const TableCategory = (props) => {
+const PostTable = (props) => {
   const {
     categoryData: { categories },
     getCategory,
@@ -39,8 +39,8 @@ const TableCategory = (props) => {
                     <td>{category.name}</td>
                     <td>{category.description}</td>
                     <td>
-                      <button onClick={() => getCategory(category.id)} className="btn btn-warning btn-sm">Edit</button>{' '}
-                      <button onClick={() => deleteCategory(category.id)} className="btn btn-danger btn-sm">Delete</button>
+                      <button onClick={() => getCategory(index)} className="btn btn-warning btn-sm">Edit</button>{' '}
+                      <button onClick={() => deleteCategory(index)} className="btn btn-danger btn-sm">Delete</button>
                     </td>
                   </tr>
                 );
@@ -55,7 +55,7 @@ const TableCategory = (props) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    categoryData: state.categoryData,
+    postData: state.postData,
   };
 };
 
@@ -64,4 +64,4 @@ const mapDispatchToProps = {
   deleteCategory
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(PostTable);

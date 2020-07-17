@@ -1,5 +1,5 @@
 import React from 'react';
-import AddCategory from '../../components/Categories/AddCategory';
+import FormCategory from '../../components/Categories/FormCategory';
 import TableCategory from '../../components/Categories/TableCategory';
 
 const Categories = () => {
@@ -7,7 +7,7 @@ const Categories = () => {
     <div>
       <h1 className="mt-4">Categories</h1>
       <div className="row">
-        <AddCategory />
+        <FormCategory />
         <TableCategory />
       </div>
     </div>

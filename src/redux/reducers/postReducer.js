@@ -1,17 +1,16 @@
-import { GET_NUMBER, ADD_NUMBER } from '../types';
+import { GET_POSTS, GET_POST } from '../types';
 
 const initState = {
-  number: 0,
+  posts: [],
+  post: {},
 };
 
 const postReducer = (state = initState, action) => {
-  const number = state.number;
   switch (action.type) {
-    case GET_NUMBER:
+    case GET_POSTS:
       return state;
-    case ADD_NUMBER:
-      var numbers = number + 1;
-      return { ...state, number: numbers };
+    case GET_POST:
+      return { ...state };
     default:
       return state;
   }

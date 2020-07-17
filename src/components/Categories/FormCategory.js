@@ -5,7 +5,7 @@ import {
   updateCategory,
 } from '../../redux/actions/categoryActions';
 
-const AddCategory = (props) => {
+const FormCategory = (props) => {
   const {
     addCategory,
     updateCategory,
@@ -31,6 +31,8 @@ const AddCategory = (props) => {
       }
       setName('');
       setDescription('');
+    } else {
+      alert("Bạn không thể để trống ô Name!!!");
     }
   };
 
@@ -73,4 +75,4 @@ const mapDispatchToProps = {
   updateCategory,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategory);
+export default connect(mapStateToProps, mapDispatchToProps)(FormCategory);
