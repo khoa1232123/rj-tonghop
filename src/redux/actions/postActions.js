@@ -14,13 +14,13 @@ export const getPosts = () => {
 
 export const getPost = (id) => {
   return (dispatch) => {
-    dispatch({ type: GET_POST });
+    dispatch({ type: GET_POST, payload: id });
   };
 };
 
-export const addPost = () => {
+export const addPost = (post) => {
   return (dispatch) => {
-    dispatch({ type: ADD_POST });
+    dispatch({ type: ADD_POST, payload: post });
   };
 };
 

@@ -7,8 +7,10 @@ import {
   DELETE_CATEGORY,
 } from '../types';
 
+const localCategory = localStorage.getItem('categories');
+
 const initState = {
-  categories: [],
+  categories: localCategory ? JSON.parse(localCategory) : [],
   category: {},
 };
 
@@ -22,6 +24,7 @@ const categoryReducer = (state = initState, action) => {
     case ADD_CATEGORY:
       var newCategory = { id: v4(), ...action.payload };
       categories.push(newCategory);
+      localStorage.setItem('categories', JSON.stringify(categories));
       return { ...state, categories };
 
     case GET_CATEGORY:
@@ -29,6 +32,7 @@ const categoryReducer = (state = initState, action) => {
         (category) => category.id === action.payload
       );
       var category = {};
+      console.log(localStorage.getItem('categories'));
       if (index !== -1) {
         category = categories[index];
       }
@@ -39,11 +43,13 @@ const categoryReducer = (state = initState, action) => {
         (category) => category.id === action.payload.id
       );
       categories[index] = action.payload;
+      localStorage.setItem('categories', JSON.stringify(categories));
       return { ...state, categories, category: {} };
 
     case DELETE_CATEGORY:
       console.log('abc');
       categories.splice(action.payload, 1);
+      localStorage.setItem('categories', JSON.stringify(categories));
       return { ...state, categories };
 
     default:

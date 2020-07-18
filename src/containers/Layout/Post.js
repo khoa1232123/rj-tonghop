@@ -5,7 +5,9 @@ const Post = () => {
   return (
     <div>
       <h1>Post</h1>
-      <PostTable />
+      <div className="row">
+        <PostTable />
+      </div>
     </div>
   );
 };

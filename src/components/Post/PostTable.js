@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCategory, deleteCategory } from '../../redux/actions/categoryActions';
+import { deletePost } from '../../redux/actions/postActions';
+import { Link } from 'react-router-dom';
 
 const PostTable = (props) => {
   const {
-    categoryData: { categories },
-    getCategory,
-    deleteCategory
+    postData: { posts },
+    deletePost,
   } = props;
   return (
-    <div className="col-xl-8 col-md-6">
+    <div className="col-xl-12 col-md-12">
       <div className="table-responsive">
         <table
           className="table table-bordered"
@@ -20,6 +20,7 @@ const PostTable = (props) => {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Category</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
@@ -27,20 +28,32 @@ const PostTable = (props) => {
           <tfoot>
             <tr>
               <th>Name</th>
+              <th>Category</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
           </tfoot>
           <tbody>
-            {categories &&
-              categories.map((category, index) => {
+            {posts &&
+              posts.map((post, index) => {
                 return (
                   <tr key={`key-${index}`}>
-                    <td>{category.name}</td>
-                    <td>{category.description}</td>
-                    <td>
-                      <button onClick={() => getCategory(index)} className="btn btn-warning btn-sm">Edit</button>{' '}
-                      <button onClick={() => deleteCategory(index)} className="btn btn-danger btn-sm">Delete</button>
+                    <td width="25%">{post.name}</td>
+                    <td width="25%">{post.Category}</td>
+                    <td width="40%">{post.description}</td>
+                    <td width="10%">
+                      <Link
+                        to={`/post/${post.id}`}
+                        className="btn btn-warning btn-sm"
+                      >
+                        Edit
+                      </Link>{' '}
+                      <button
+                        onClick={() => deletePost(post.id)}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -53,15 +66,13 @@ const PostTable = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     postData: state.postData,
   };
 };
 
 const mapDispatchToProps = {
-  getCategory,
-  deleteCategory
+  deletePost,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostTable);

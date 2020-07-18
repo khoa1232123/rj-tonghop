@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCategory, deleteCategory } from '../../redux/actions/categoryActions';
+import {
+  getCategory,
+  deleteCategory,
+} from '../../redux/actions/categoryActions';
 
 const TableCategory = (props) => {
   const {
     categoryData: { categories },
     getCategory,
-    deleteCategory
+    deleteCategory,
   } = props;
   return (
     <div className="col-xl-8 col-md-6">
@@ -36,11 +39,21 @@ const TableCategory = (props) => {
               categories.map((category, index) => {
                 return (
                   <tr key={`key-${index}`}>
-                    <td>{category.name}</td>
-                    <td>{category.description}</td>
-                    <td>
-                      <button onClick={() => getCategory(category.id)} className="btn btn-warning btn-sm">Edit</button>{' '}
-                      <button onClick={() => deleteCategory(category.id)} className="btn btn-danger btn-sm">Delete</button>
+                    <td width="30%">{category.name}</td>
+                    <td width="50%">{category.description}</td>
+                    <td width="20%">
+                      <button
+                        onClick={() => getCategory(category.id)}
+                        className="btn btn-warning btn-sm"
+                      >
+                        Edit
+                      </button>{' '}
+                      <button
+                        onClick={() => deleteCategory(category.id)}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -61,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   getCategory,
-  deleteCategory
+  deleteCategory,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableCategory);

@@ -5,6 +5,7 @@ import Layout from './containers/Layout';
 import Error404 from './containers/Error404';
 import Home from './containers/Layout/Home';
 import Post from './containers/Layout/Post';
+import PostForm from './containers/Layout/PostForm';
 import Categories from './containers/Layout/Categories';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
                 <Route path="/" exact component={Home} />
                 <Route path="/categories" exact component={Categories} />
                 <Route path="/post" exact component={Post} />
+                <Route path="/post/add" exact component={PostForm} />
+                <Route path="/post/:id" exact component={PostForm} />
               </Switch>
             </Layout>
           </Route>
