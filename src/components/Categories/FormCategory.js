@@ -32,7 +32,7 @@ const FormCategory = (props) => {
       setName('');
       setDescription('');
     } else {
-      alert("Bạn không thể để trống ô Name!!!");
+      alert('Bạn không thể để trống ô Name!!!');
     }
   };
 

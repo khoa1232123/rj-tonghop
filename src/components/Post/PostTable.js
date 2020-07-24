@@ -39,8 +39,13 @@ const PostTable = (props) => {
                 return (
                   <tr key={`key-${index}`}>
                     <td width="25%">{post.name}</td>
-                    <td width="25%">{post.Category}</td>
-                    <td width="40%">{post.description}</td>
+                    <td width="25%">{post.categories && post.categories.map(item => `${item}, `)}</td>
+                    <td
+                      width="40%"
+                      dangerouslySetInnerHTML={{
+                        __html: post.description,
+                      }}
+                    />
                     <td width="10%">
                       <Link
                         to={`/post/${post.id}`}
