@@ -12,10 +12,8 @@ export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
-// Data reducer types
-export const LOADING_DATA = 'LOADING_DATA';
-export const SET_SCREAMS = 'SET_SCREAMS';
-export const SET_SCREAM = 'SET_SCREAM';
-export const LIKE_SCREAM = 'LIKE_SCREAM';
-export const UNLIKE_SCREAM = 'UNLIKE_SCREAM';
-export const DELETE_SCREAM = 'DELETE_SCREAM';
+// covid19 reducer types
+export const GET_FULL_DATA = 'GET_FULL_DATA';
+export const GET_DAILY_DATA = 'GET_DAILY_DATA';
+export const GET_COUNTRIES_DATA = 'GET_COUNTRIES_DATA';
+export const GET_COUNTRY_DATA = 'GET_COUNTRY_DATA';

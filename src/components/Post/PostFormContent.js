@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { connect } from 'react-redux';
 import { addPost, updatePost, getPost } from '../../redux/actions/postActions';
-import { useParams } from 'react-router';
+import { useParams, Redirect } from 'react-router';
 
 const PostFormContent = (props) => {
   const {
@@ -13,7 +13,7 @@ const PostFormContent = (props) => {
     categoryData: { categories },
   } = props;
 
-  const { id } = useParams();
+  const { history, id } = useParams();
   const editor = useRef(null);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -39,6 +39,8 @@ const PostFormContent = (props) => {
       }
       setName('');
       setDescription('');
+      history.push('/post');
+      return <Redirect to="/post" />;
     } else {
       alert('Bạn không thể để trống ô Name!!!');
     }

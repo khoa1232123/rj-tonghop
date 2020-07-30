@@ -1,4 +1,10 @@
-import { ADD_CATEGORY, GET_CATEGORIES, GET_CATEGORY, UPDATE_CATEGORY, DELETE_CATEGORY } from '../types';
+import {
+  ADD_CATEGORY,
+  GET_CATEGORIES,
+  GET_CATEGORY,
+  UPDATE_CATEGORY,
+  DELETE_CATEGORY,
+} from '../types';
 
 export const addCategory = (category) => {
   return (dispatch) => {

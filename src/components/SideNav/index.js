@@ -39,6 +39,26 @@ const SideNav = (props) => {
               </div>
               Post
             </NavLink>
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/covid19"
+            >
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt"></i>
+              </div>
+              Covid19
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/weather"
+            >
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt"></i>
+              </div>
+              Weather
+            </NavLink>
             <div className="sb-sidenav-menu-heading">Interface</div>
             <a
               className="nav-link collapsed"
