@@ -1,7 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import JoditEditor from 'jodit-react';
 import { connect } from 'react-redux';
-import { addPost, updatePost, getPost } from '../../redux/actions/postActions';
+import {
+  addPost,
+  updatePost,
+  getPost,
+} from '../../../redux/actions/postActions';
 import { useParams, Redirect } from 'react-router';
 
 const PostFormContent = (props) => {

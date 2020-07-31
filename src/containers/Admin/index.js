@@ -1,9 +1,9 @@
 import React from 'react';
-import TopNav from '../../components/TopNav';
-import SideNav from '../../components/SideNav';
-import Footer from '../../components/Footer';
+import TopNav from '../../components/Admin/TopNav';
+import SideNav from '../../components/Admin/SideNav';
+import Footer from '../../components/Admin/Footer';
 
-const Layout = ({ children }) => {
+const Admin = ({ children }) => {
   return (
     <>
       <TopNav />
@@ -20,4 +20,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default Admin;

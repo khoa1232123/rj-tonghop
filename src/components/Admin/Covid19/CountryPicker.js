@@ -2,7 +2,7 @@ import React from 'react';
 import {
   getCountriesDataCovid,
   getCountryDataCovid,
-} from '../../redux/actions/covid19Actions';
+} from '../../../redux/actions/covid19Actions';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 

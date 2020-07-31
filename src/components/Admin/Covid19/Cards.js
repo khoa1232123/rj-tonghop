@@ -1,5 +1,5 @@
 import React from 'react';
-import { getDataCovid } from '../../redux/actions/covid19Actions';
+import { getDataCovid } from '../../../redux/actions/covid19Actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import CountUp from 'react-countup';

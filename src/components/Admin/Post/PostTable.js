@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deletePost } from '../../redux/actions/postActions';
+import { deletePost } from '../../../redux/actions/postActions';
 import { Link } from 'react-router-dom';
 
 const PostTable = (props) => {
@@ -39,7 +39,10 @@ const PostTable = (props) => {
                 return (
                   <tr key={`key-${index}`}>
                     <td width="25%">{post.name}</td>
-                    <td width="25%">{post.categories && post.categories.map(item => `${item}, `)}</td>
+                    <td width="25%">
+                      {post.categories &&
+                        post.categories.map((item) => `${item}, `)}
+                    </td>
                     <td
                       width="40%"
                       dangerouslySetInnerHTML={{

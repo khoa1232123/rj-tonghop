@@ -11,13 +11,13 @@ const SideNav = (props) => {
         <div className="sb-sidenav-menu">
           <div className="nav">
             <div className="sb-sidenav-menu-heading">Core</div>
-            <a className="nav-link" href="/">
+            <a className="nav-link" href="/admin">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
               Dashboard
             </a>
-            <NavLink className="nav-link" activeClassName="active" to="/">
+            <NavLink className="nav-link" activeClassName="active" to="/admin">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
@@ -26,14 +26,18 @@ const SideNav = (props) => {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to="/categories"
+              to="/admin/categories"
             >
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
               Categories
             </NavLink>
-            <NavLink className="nav-link" activeClassName="active" to="/post">
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/admin/post"
+            >
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
@@ -42,7 +46,7 @@ const SideNav = (props) => {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to="/covid19"
+              to="/admin/covid19"
             >
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
@@ -52,12 +56,22 @@ const SideNav = (props) => {
             <NavLink
               className="nav-link"
               activeClassName="active"
-              to="/weather"
+              to="/admin/weather"
             >
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
               Weather
+            </NavLink>
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/shopping"
+            >
+              <div className="sb-nav-link-icon">
+                <i className="fas fa-tachometer-alt"></i>
+              </div>
+              Shopping
             </NavLink>
             <div className="sb-sidenav-menu-heading">Interface</div>
             <a

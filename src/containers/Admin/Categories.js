@@ -1,6 +1,6 @@
 import React from 'react';
-import FormCategory from '../../components/Categories/FormCategory';
-import TableCategory from '../../components/Categories/TableCategory';
+import FormCategory from '../../components/Admin/Categories/FormCategory';
+import TableCategory from '../../components/Admin/Categories/TableCategory';
 
 const Categories = () => {
   return (

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   addCategory,
   updateCategory,
-} from '../../redux/actions/categoryActions';
+} from '../../../redux/actions/categoryActions';
 
 const FormCategory = (props) => {
   const {

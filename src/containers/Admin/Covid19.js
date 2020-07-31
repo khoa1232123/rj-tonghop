@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cards, CountryPicker, Chart } from '../../components/Covid19';
+import { Cards, CountryPicker, Chart } from '../../components/Admin/Covid19';
 
 const Covid19 = (props) => {
   return (

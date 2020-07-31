@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getDailyDataCovid } from '../../redux/actions/covid19Actions';
+import { getDailyDataCovid } from '../../../redux/actions/covid19Actions';
 import { Line, Bar } from 'react-chartjs-2';
 import { connect } from 'react-redux';
 

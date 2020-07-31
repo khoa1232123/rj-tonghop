@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   getCategory,
   deleteCategory,
-} from '../../redux/actions/categoryActions';
+} from '../../../redux/actions/categoryActions';
 
 const TableCategory = (props) => {
   const {
