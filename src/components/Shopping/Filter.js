@@ -2,11 +2,11 @@ import React from 'react';
 
 const Filter = ({ count, sort, size, sortProducts, sizeProducts }) => {
   return (
-    <div className="row filter mb-4">
+    <div className="row filter">
       <div className="col-12 col-md-4 filter-result">
-        <h1>
-          Total: <span>{count} items</span>
-        </h1>
+        <span>
+          Total: <span>{count} products</span>
+        </span>
       </div>
       <div className="col-12 col-md-4 filter-sort">
         <span>Order</span>

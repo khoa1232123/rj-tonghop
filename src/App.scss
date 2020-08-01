@@ -146,12 +146,15 @@
 }
 
 .filter {
+  .filter-result,
   .filter-sort,
   .filter-size {
     display: flex;
     align-items: center;
     span {
       margin-right: 10px;
+      font-weight: 700;
+      font-size: 18px;
     }
     .form-control {
       width: auto;
@@ -176,5 +179,46 @@
   }
   .add-to-cart {
     float: right;
+  }
+}
+.cart {
+  .cart-items {
+    padding-left: 0px;
+    list-style: none;
+    .cart-item {
+      display: flex;
+      margin-bottom: 20px;
+      .image {
+        flex: 1;
+        margin-right: 10px;
+        img {
+          width: 100%;
+        }
+      }
+      .content {
+        flex: 5;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        .title {
+          font-size: 18px;
+        }
+        button {
+          float: right;
+        }
+      }
+    }
+  }
+  .cart-total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ebebeb;
+    padding-top: 20px;
+    span {
+      font-weight: 700;
+      font-size: 18px;
+    }
   }
 }
