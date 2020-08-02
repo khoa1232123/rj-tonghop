@@ -17,3 +17,9 @@ export const GET_FULL_DATA = 'GET_FULL_DATA';
 export const GET_DAILY_DATA = 'GET_DAILY_DATA';
 export const GET_COUNTRIES_DATA = 'GET_COUNTRIES_DATA';
 export const GET_COUNTRY_DATA = 'GET_COUNTRY_DATA';
+
+// covid19 reducer types
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+// export const GET_DAILY_DATA = 'GET_DAILY_DATA';
+// export const GET_COUNTRIES_DATA = 'GET_COUNTRIES_DATA';
+// export const GET_COUNTRY_DATA = 'GET_COUNTRY_DATA';

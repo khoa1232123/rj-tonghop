@@ -12,6 +12,11 @@ mongoose.connect('mongodb://localhost/react-shopping-cart-db', {
   useUnifiedTopology: true,
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 const Product = mongoose.model(
   'products',
   new mongoose.Schema({

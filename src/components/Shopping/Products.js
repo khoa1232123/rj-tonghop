@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../../redux/actions/productActions';
 
-const Products = ({ products, addToCart }) => {
+const Products = ({ productData: { products }, addToCart, fetchProducts }) => {
   const [productModal, setProductModal] = useState(null);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   const openModal = (product) => {
     setProductModal(product);
   };
-
-  console.log(productModal);
 
   const closeModal = () => {
     setProductModal(null);
@@ -65,7 +69,6 @@ const Products = ({ products, addToCart }) => {
         <div className="row products">
           {products.length &&
             products.map((product) => {
-              console.log(product);
               return (
                 <div className="col-12 col-md-4 mb-4" key={product._id}>
                   <div className="card product">
@@ -107,4 +110,14 @@ const Products = ({ products, addToCart }) => {
   );
 };
 
-export default Products;
+const mapStateToProps = (state) => {
+  return {
+    productData: state.productData,
+  };
+};
+
+const mapDispatchToProps = {
+  fetchProducts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
