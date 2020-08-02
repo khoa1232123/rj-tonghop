@@ -1,11 +1,20 @@
 import React from 'react';
+import {
+  filterProductsBySize,
+  orderProductsByPrice,
+} from '../../redux/actions/productActions';
+import { connect } from 'react-redux';
 
-const Filter = ({ count, sort, size, sortProducts, sizeProducts }) => {
+const Filter = ({
+  productData: { products, filterProducts },
+  filterProductsBySize,
+  orderProductsByPrice,
+}) => {
   return (
     <div className="row filter">
       <div className="col-12 col-md-4 filter-result">
         <span>
-          Total: <span>{count} products</span>
+          Total: <span>{products.length} products</span>
         </span>
       </div>
       <div className="col-12 col-md-4 filter-sort">
@@ -13,8 +22,7 @@ const Filter = ({ count, sort, size, sortProducts, sizeProducts }) => {
         <select
           name="order"
           className="form-control"
-          value={sort}
-          onChange={sortProducts}
+          onChange={(e) => orderProductsByPrice(products, e.target.value)}
         >
           <option value="">Latest</option>
           <option value="lowest">Lowest</option>
@@ -26,8 +34,7 @@ const Filter = ({ count, sort, size, sortProducts, sizeProducts }) => {
         <select
           name="size"
           className="form-control"
-          value={size}
-          onChange={sizeProducts}
+          onChange={(e) => filterProductsBySize(filterProducts, e.target.value)}
         >
           <option value="">All</option>
           <option value="XS">XS</option>
@@ -42,4 +49,15 @@ const Filter = ({ count, sort, size, sortProducts, sizeProducts }) => {
   );
 };
 
-export default Filter;
+const mapStateToProps = (state) => {
+  return {
+    productData: state.productData,
+  };
+};
+
+const mapDispatchToProps = {
+  filterProductsBySize,
+  orderProductsByPrice,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);

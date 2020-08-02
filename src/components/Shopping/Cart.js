@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Fade from 'react-reveal/Fade';
+import {
+  getCartItems,
+  removeFromCart,
+} from '../../redux/actions/productActions';
+import { connect } from 'react-redux';
 
-const Cart = ({ cartItems, removeItemCart, createOrder }) => {
+const Cart = ({
+  productData: { cartItems },
+  getCartItems,
+  removeFromCart,
+  createOrder,
+}) => {
+  useEffect(() => {
+    getCartItems();
+  }, [getCartItems]);
+
   const [showCheckout, setShowCheckout] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -47,7 +61,7 @@ const Cart = ({ cartItems, removeItemCart, createOrder }) => {
                       </span>
                       <button
                         className="btn btn-danger btn-sm"
-                        onClick={() => removeItemCart(item)}
+                        onClick={() => removeFromCart(item)}
                       >
                         Remove
                       </button>
@@ -130,4 +144,15 @@ const Cart = ({ cartItems, removeItemCart, createOrder }) => {
   );
 };
 
-export default Cart;
+const mapStateToProps = (state) => {
+  return {
+    productData: state.productData,
+  };
+};
+
+const mapDispatchToProps = {
+  getCartItems,
+  removeFromCart,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

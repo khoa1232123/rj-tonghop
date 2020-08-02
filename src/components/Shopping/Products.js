@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade';
 import Modal from 'react-modal';
 import Zoom from 'react-reveal/Zoom';
 import { connect } from 'react-redux';
-import { fetchProducts } from '../../redux/actions/productActions';
+import { fetchProducts, addToCart } from '../../redux/actions/productActions';
 
 const Products = ({ productData: { products }, addToCart, fetchProducts }) => {
   const [productModal, setProductModal] = useState(null);
@@ -67,7 +67,7 @@ const Products = ({ productData: { products }, addToCart, fetchProducts }) => {
     <Fade bottom cascade>
       <React.Fragment>
         <div className="row products">
-          {products.length &&
+          {products.length !== 0 &&
             products.map((product) => {
               return (
                 <div className="col-12 col-md-4 mb-4" key={product._id}>
@@ -118,6 +118,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   fetchProducts,
+  addToCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
