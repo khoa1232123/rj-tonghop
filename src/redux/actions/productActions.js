@@ -4,8 +4,10 @@ import {
   GET_CART_ITEMS,
   ADD_TO_CART,
   REMOVE_FORM_CART,
+  CREATE_ORDER,
+  CLEAR_ORDER,
 } from '../types';
-import { fetchProductData } from '../../api/products';
+import { fetchProductData, createOrderData } from '../../api/products';
 
 export const fetchProducts = () => async (dispatch) => {
   const res = await fetchProductData();
@@ -75,5 +77,31 @@ export const removeFromCart = (product) => (dispatch, getState) => {
   const items = cartItems.slice();
   const newItems = items.filter((item) => item._id !== product._id);
   localStorage.setItem('cartItems', JSON.stringify(newItems));
+
   dispatch({ type: REMOVE_FORM_CART, payload: newItems });
+};
+
+export const createOrder = (order) => async (dispatch) => {
+  fetch('http://localhost:5000/api/orders', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(order),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      dispatch({ type: CREATE_ORDER, payload: data });
+      // localStorage.clear("cartItems");
+      // dispatch({ type: CLEAR_CART });
+    });
+  // const data = await createOrderData(order);
+  // console.log(data);
+  // dispatch({ type: CREATE_ORDER, payload: data });
+  // localStorage
+};
+
+export const clearOrder = () => (dispatch) => {
+  dispatch({ type: CLEAR_ORDER });
 };

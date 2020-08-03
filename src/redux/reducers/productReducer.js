@@ -5,12 +5,15 @@ const {
   GET_CART_ITEMS,
   ADD_TO_CART,
   REMOVE_FORM_CART,
+  CREATE_ORDER,
+  CLEAR_ORDER,
 } = require('../types');
 
 const initState = {
   products: [],
   filterProducts: [],
   cartItems: [],
+  order: null,
 };
 
 const productReducer = (state = initState, action) => {
@@ -40,6 +43,18 @@ const productReducer = (state = initState, action) => {
       return {
         ...state,
         cartItems: action.payload,
+      };
+
+    case CREATE_ORDER:
+      return {
+        ...state,
+        order: action.payload,
+      };
+
+    case CLEAR_ORDER:
+      return {
+        ...state,
+        order: null,
       };
 
     default:

@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/react-shopping-cart-db', {
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
 });
 
@@ -75,13 +76,22 @@ app.post('/api/orders', async (req, res) => {
     !req.body.name ||
     !req.body.email ||
     !req.body.adress ||
-    !req.body.toal ||
+    !req.body.total ||
     !req.body.cartItems
   ) {
     return res.send({ message: 'data is required' });
   }
 
   const order = await Order(req.body).save();
+  res.send(order);
+});
+
+app.get('/api/orders', async (req, res) => {
+  const orders = await Order.find({});
+  res.send(orders);
+});
+app.delete('/api/orders/:id', async (req, res) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
   res.send(order);
 });
 

@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Fade from 'react-reveal/Fade';
+import Modal from 'react-modal';
+import Zoom from 'react-reveal/Zoom';
 import {
   getCartItems,
   removeFromCart,
+  clearOrder,
+  createOrder,
 } from '../../redux/actions/productActions';
 import { connect } from 'react-redux';
 
 const Cart = ({
-  productData: { cartItems },
+  productData: { cartItems, order },
   getCartItems,
   removeFromCart,
+  clearOrder,
   createOrder,
 }) => {
   useEffect(() => {
@@ -23,17 +28,22 @@ const Cart = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const order = {
+    const newOrder = {
       name,
       email,
       address,
       cartItems,
+      total: cartItems.reduce((a, c) => a + c.price * c.count, 0),
     };
-    createOrder(order);
+    createOrder(newOrder);
     setShowCheckout(false);
     setName('');
     setEmail('');
     setAddress('');
+  };
+
+  const closeModal = () => {
+    clearOrder();
   };
 
   return (
@@ -43,6 +53,50 @@ const Cart = ({
           <span>Cart is empty</span>
         ) : (
           <span>You have {cartItems.length} in the cart</span>
+        )}
+        {order && (
+          <Modal isOpen={true} onRequestClose={() => closeModal()}>
+            <Zoom>
+              <button
+                className="btn btn-danger close-modal"
+                onClick={() => closeModal()}
+              >
+                X
+              </button>
+              <div className="order-detail">
+                <h3 className="success-message">Your order has been placed.</h3>
+                <h2>Order {order._id}</h2>
+                <ul>
+                  <li>
+                    <div>Name:</div>
+                    <div>{order.name}</div>
+                  </li>
+                  <li>
+                    <div>Email:</div>
+                    <div>{order.email}</div>
+                  </li>
+                  <li>
+                    <div>Address:</div>
+                    <div>{order.address}</div>
+                  </li>
+                  <li>
+                    <div>Total:</div>
+                    <div>${order.total}</div>
+                  </li>
+                  <li>
+                    <div>Cart Items:</div>
+                    <div>
+                      {order.cartItems.map((item) => (
+                        <div>
+                          {item.count}*{item.title}
+                        </div>
+                      ))}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </Zoom>
+          </Modal>
         )}
         <hr />
         <Fade left cascade>
@@ -153,6 +207,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   getCartItems,
   removeFromCart,
+  clearOrder,
+  createOrder,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

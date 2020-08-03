@@ -9,3 +9,18 @@ export const fetchProductData = async () => {
     console.log(error);
   }
 };
+
+export const createOrderData = async (order) => {
+  let url = '/api/orders';
+  await axios
+    .post(url, {
+      body: JSON.stringify(order),
+    })
+    .then((res) => {
+      console.log(res);
+      return res;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};

@@ -4,10 +4,6 @@ import Cart from './Cart';
 import Filter from './Filter';
 
 const Main = (props) => {
-  const createOrder = (order) => {
-    alert('Need to save order for ' + order.name);
-  };
-
   return (
     <main className="shopping-cart">
       <div className="container-fluid">
@@ -18,7 +14,7 @@ const Main = (props) => {
             <Products />
           </div>
           <div className="col-12 col-md-3">
-            <Cart createOrder={createOrder} />
+            <Cart />
           </div>
         </div>
       </div>
