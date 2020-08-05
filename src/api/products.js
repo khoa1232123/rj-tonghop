@@ -10,11 +10,14 @@ export const fetchProductData = async () => {
   }
 };
 
-export const createOrderData = async (order) => {
-  let url = '/api/orders';
-  await axios
+export const createOrderData = (order) => {
+  let url = 'http://localhost:5000/api/orders';
+  axios
     .post(url, {
-      body: JSON.stringify(order),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: order,
     })
     .then((res) => {
       console.log(res);
